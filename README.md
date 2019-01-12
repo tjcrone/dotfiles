@@ -1,2 +1,2 @@
 # dotfiles
-My linux dot files
+My Linux/Mac dot files.
