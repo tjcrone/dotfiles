@@ -1,19 +1,19 @@
-# My .bashrc file
-
 # if not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
 # mac aliases
+# brew install coreutils gnu-which findutils tree jq
 if [ "$(uname)" == "Darwin" ]; then
   eval `gdircolors -b`
   alias ls='gls --color=always -N'
   alias updatedb='sudo /usr/local/bin/gupdatedb'
   alias locate='/usr/local/bin/glocate'
+  alias which='/usr/local/bin/gwhich'
   alias sudo='sudo ' # this allows aliases to cascade to sudo commands
 fi
 
 # linux aliases
-if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+if [ "$(uname)" == "Linux" ]; then
   if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=always'
@@ -58,7 +58,7 @@ export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
 export EDITOR=/usr/bin/vim
 
 # automatic screen in linux
-if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+if [ "$(uname)" == "Linux" ]; then
   if [ -x "$(command -v screen)" ]; then
     if [ -z "$STY" ]; then
       socket=`screen -ls | grep Detached | cut -f2 | sort | head -n1`
