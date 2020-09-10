@@ -16,14 +16,3 @@
 	old = red bold
 	new = green bold
 
-[core]
-attributesfile = ~/.gitattributes_global
-
-[filter "nbstrip"]
-clean = "jq --indent 1 \
-        '(.cells[] | select(has(\"outputs\")) | .outputs) = []  \
-        | (.cells[] | select(has(\"execution_count\")) | .execution_count) = null  \
-        | .cells[].metadata = {} \
-        '"
-smudge = cat
-required = true
