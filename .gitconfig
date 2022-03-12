@@ -1,6 +1,7 @@
 [user]
 	name = Tim Crone
 	email = tjcrone@gmail.com
+	signingkey = D2CEB7C32859C48A
 
 [push]
 	default = simple
@@ -16,3 +17,10 @@
 	old = red bold
 	new = green bold
 
+[core]
+	pager = less -F -X
+
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
