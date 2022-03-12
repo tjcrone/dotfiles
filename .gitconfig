@@ -8,7 +8,7 @@
 
 [alias]
 	wdiff = diff --color-words
-	lg = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
+	lg = "log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset %C(236)%GK%Creset' --abbrev-commit"
 	caa = commit -a --amend -C HEAD
 
 [color "diff"]
