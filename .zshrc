@@ -114,61 +114,17 @@ function git_prompt_info() {
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-# conda base
-#CONDA_AUTO_ACTIVATE_BASE=true
-
-# m1 conda init
-init_conda() {
-    # >>> conda initialize >>>
-    conda_path="/opt/homebrew/Caskroom/miniconda/base/"
-    __conda_setup="$('${conda_path}/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "${conda_path}/etc/profile.d/conda.sh" ]; then
-            . "${conda_path}/etc/profile.d/conda.sh"
-        else
-            export PATH="${conda_path}/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-
-    if [ -f "${conda_path}/etc/profile.d/mamba.sh" ]; then
-        . "${conda_path}/etc/profile.d/mamba.sh"
-    fi
-    # <<< conda initialize <<<
-}
-
-# intel conda init
-init_conda_intel() {
-   # >>> conda initialize >>>
-   conda_path="/Users/tjc/miniconda3-intel"
-   __conda_setup="$('${conda_path}/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-   if [ $? -eq 0 ]; then
-      eval "$__conda_setup"
-   else
-      if [ -f "${conda_path}/etc/profile.d/conda.sh" ]; then
-          . "${conda_path}/etc/profile.d/conda.sh"
-      else
-          export PATH="${conda_path}/bin:$PATH"
-      fi
-   fi
-   unset __conda_setup
-
-   if [ -f "${conda_path}/etc/profile.d/mamba.sh" ]; then
-       . "${conda_path}/etc/profile.d/mamba.sh"
-   fi
-   # <<< conda initialize <<<
-}
-
-# init conda based on arch
-if [[ $(uname -m) == 'x86_64' ]]; then
-    init_conda_intel
-    echo "conda x86_64 is activated"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/mambaforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
 else
-    CONDA_AUTO_ACTIVATE_BASE=true
-    init_conda
-    echo "conda m1 is activated"
+    if [ -f "/opt/homebrew/Caskroom/mambaforge/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/mambaforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/mambaforge/base/bin:$PATH"
+    fi
 fi
-
-conda activate base
+unset __conda_setup
+# <<< conda initialize <<<
