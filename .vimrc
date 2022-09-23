@@ -50,3 +50,4 @@ set guifontwide=NSimsun:h12
 
 " line numbers
 set number
+highlight LineNr ctermfg=235
