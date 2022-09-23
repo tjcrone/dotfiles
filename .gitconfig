@@ -8,7 +8,7 @@
 
 [alias]
 	wdiff = diff --color-words
-	lg = "log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset %C(236)%GK%Creset' --abbrev-commit"
+	lg = "log --all --color --graph --pretty=format:'%C(cyan)%h%Creset -%C(128 black)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset %C(236)%GK%Creset' --abbrev-commit"
 	caa = commit -a --amend -C HEAD
 
 [color "diff"]
@@ -24,3 +24,5 @@
 	gpgsign = true
 [gpg]
 	program = gpg
+[init]
+	defaultBranch = main
